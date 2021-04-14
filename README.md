@@ -1,6 +1,6 @@
 # Multiplatform SDK Template
 
-Template / Example project for multiplatform SDK projects.
+Template / Example project for multiplatform SDKs.
 
 ## Basic architecture
 
