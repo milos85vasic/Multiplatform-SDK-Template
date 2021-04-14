@@ -38,3 +38,7 @@ Tbd.
 ## How to build
 
 Tbd.
+
+## How to try it out
+
+Tbd.
