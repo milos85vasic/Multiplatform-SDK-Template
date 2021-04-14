@@ -4,9 +4,9 @@ Template / Example project for multiplatform SDK projects.
 
 ## Basic architecture
 
-Code is divided into three directories:
+Code is divided into three parts:
 
-- Native core, contains native C++ implementation shared between platforms
+- Native, the core that contains native C++ implementation shared between platforms
 - Android, Android SDK version
 - iOS, iOS SDK version
 
