@@ -34,7 +34,9 @@ Tbd.
 
 ### iOS dependencies
 
-Tbd.
+iOS dependencies are the following:
+
+- XCode >= 12.4
 
 ## How to build
 
