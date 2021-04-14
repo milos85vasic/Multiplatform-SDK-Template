@@ -25,8 +25,8 @@ Native C++ core depends on the following libraries:
 
 - C++ >= 17
 - Cmake >= 
-- [Boost](https://www.boost.org/) (used as a part of this example SDK)
-- [Boost ASIO](https://www.boost.org/doc/libs/1_75_0/doc/html/boost_asio.html) (used as a part of this example SDK)
+- [Boost](https://www.boost.org/) (used as a part of this example SDK) >= 1.71.1
+- [Boost ASIO](https://www.boost.org/doc/libs/1_75_0/doc/html/boost_asio.html) (used as a part of this example SDK) >= 1.71.1
 
 ### Android dependencies
 
