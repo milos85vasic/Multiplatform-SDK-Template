@@ -44,4 +44,11 @@ Tbd.
 
 ## How to try it out
 
-Tbd.
+Example SDK is demonstrated through use in the following platforms:
+
+- Android
+- iOS
+- Qt
+- Java application
+
+
