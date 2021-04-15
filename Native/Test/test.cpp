@@ -1,5 +1,6 @@
+#include <gtest/gtest.h>
 
-int main(int argc, char *argv[]) {
+TEST(BoostLibraryTest, AvailabilityTest) {
 
-    return 0;
+    ASSERT_TRUE(true);
 }

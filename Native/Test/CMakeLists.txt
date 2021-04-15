@@ -16,5 +16,10 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
+enable_testing()
+
 add_executable(SDK_Native_Test test.cpp)
-target_link_libraries(SDK_Native_Test)
+target_link_libraries(SDK_Native_Test gtest_main)
+
+include(GoogleTest)
+gtest_discover_tests(SDK_Native_Test)
