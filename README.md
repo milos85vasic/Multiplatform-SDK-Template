@@ -29,6 +29,7 @@ Native C++ core depends on the following libraries:
 - Make build tool >= 3.81
 - [Boost](https://www.boost.org/) (used as a part of this example SDK) >= 1.71.1
 - [Boost ASIO](https://www.boost.org/doc/libs/1_75_0/doc/html/boost_asio.html) (used as a part of this example SDK) >= 1.71.1
+- For unit tests, (Google Test)[https://github.com/google/googletest] library >= 1.10
 
 ### Android dependencies
 
