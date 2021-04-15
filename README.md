@@ -24,6 +24,7 @@ To be able to build SDK some dependencies must be fulfilled:
 Native C++ core depends on the following libraries:
 
 - C++ >= 17
+- A compatible C++ compiler that supports at least C++ 17
 - Cmake >= 3.19
 - [Boost](https://www.boost.org/) (used as a part of this example SDK) >= 1.71.1
 - [Boost ASIO](https://www.boost.org/doc/libs/1_75_0/doc/html/boost_asio.html) (used as a part of this example SDK) >= 1.71.1
