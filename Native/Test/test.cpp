@@ -1,6 +1,11 @@
+#include <string>
+#include <iostream>
+#include "library.h"
 #include <gtest/gtest.h>
 
 TEST(BoostLibraryTest, AvailabilityTest) {
 
-    ASSERT_TRUE(true);
+    auto version = getBoostVersion();
+    std::cout << "Boost version: " << version << std::endl;
+    ASSERT_FALSE(version.empty());
 }

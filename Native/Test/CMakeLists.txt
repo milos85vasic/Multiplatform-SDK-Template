@@ -6,6 +6,14 @@ set(CMAKE_CXX_STANDARD 17)
 set(SDK_Native_Test_VERSION_MAJOR 1)
 set(SDK_Native_Test_VERSION_MINOR 0)
 
+include_directories("../Implementation")
+
+file(
+
+        GLOB SDK_SRC
+        "../Implementation/library.h"
+        "../Implementation/library.cpp"
+)
 
 include(FetchContent)
 FetchContent_Declare(
@@ -16,10 +24,13 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
+find_package(Boost 1.71 REQUIRED)
+include_directories(${Boost_INCLUDE_DIR})
+
 enable_testing()
 
-add_executable(SDK_Native_Test test.cpp)
-target_link_libraries(SDK_Native_Test gtest_main)
+add_executable(SDK_Native_Test ${SDK_SRC} test.cpp)
+target_link_libraries(SDK_Native_Test LINK_PUBLIC ${Boost_LIBRARIES} gtest_main)
 
 include(GoogleTest)
 gtest_discover_tests(SDK_Native_Test)
