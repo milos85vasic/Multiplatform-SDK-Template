@@ -44,7 +44,19 @@ iOS dependencies are the following:
 
 - XCode >= 12.4
 
-## How to build
+## How to build and test
+
+Tbd.
+
+### How to build and test native code
+
+Tbd.
+
+### How to build and test Android code
+
+Tbd.
+
+### How to build and test iOS code
 
 Tbd.
 
