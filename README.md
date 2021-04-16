@@ -49,7 +49,7 @@ Tbd.
 
 Example SDK is demonstrated through use in the following platforms:
 
-- Android
+- [Android](Android/Application)
 - iOS
 - Qt
 - Java application
