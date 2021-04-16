@@ -44,6 +44,14 @@ android {
 
         jvmTarget = '1.8'
     }
+
+    externalNativeBuild {
+
+        cmake {
+
+            path "../../Native/Implementation/CMakeLists.txt"
+        }
+    }
 }
 
 dependencies {
