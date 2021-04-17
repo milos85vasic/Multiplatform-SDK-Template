@@ -6,7 +6,7 @@ Template / Example project for multiplatform SDKs.
 
 Code is divided into three parts:
 
-- Boost, the [Boost](https://www.boost.org/) library
+- Boost, the [Boost](https://www.boost.org/) C++ library
 - Native, the core that contains native C++ implementation shared between platforms
 - Android, Android SDK version
 - iOS, iOS SDK version
