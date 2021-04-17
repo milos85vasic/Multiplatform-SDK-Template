@@ -36,6 +36,7 @@ Native C++ core depends on the following libraries:
 
 Android dependencies are the follwoing:
 
+- Android Studio >= 4.1.3
 - Android NDK >= 21.0.6113669
 - Kotlin >= 1.4.32
 
