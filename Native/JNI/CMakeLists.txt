@@ -8,17 +8,39 @@ project(${PROJECT_NAME} VERSION "${VERSION_MAJOR}.${VERSION_MINOR}" DESCRIPTION 
 
 set(CMAKE_CXX_STANDARD 17)
 
-# Access to shared library header files:
-include_directories("/usr/local/include/SDK_Native")
+set(BOOST_ROOT "${PROJECT_SOURCE_DIR}/../../Boost")
+set(Boost_INCLUDE_DIR "${BOOST_ROOT}")
+set(Boost_LIBRARY_DIR "${BOOST_ROOT}/libs")
 
-# Link shared library:
-link_directories("/usr/local/lib/SDK_Native")
-link_libraries(SDK_Native)
+find_package(Boost 1.71)
 
-# Create shared library
-file(GLOB LIB_SRC *.h *.cpp)
+message("Boost library include dir: ${Boost_INCLUDE_DIR}")
+message("Boost library library dir: ${Boost_LIBRARY_DIR}")
+
+include_directories(${Boost_INCLUDE_DIR})
+link_directories(${Boost_LIBRARY_DIR})
+
+if(ANDROID_BUILD)
+
+    set(JAVA_JVM_LIBRARY NotNeeded)
+    set(JAVA_AWT_LIBRARY NotNeeded)
+    set(JAVA_INCLUDE_PATH2 NotNeeded)
+    set(JAVA_AWT_INCLUDE_PATH NotNeeded)
+endif()
+
+find_package(JNI)
+
+include_directories(
+
+        "${PROJECT_BINARY_DIR}"
+        "../Implementation"
+        ${JNI_INCLUDE_DIRS}
+        ${CMAKE_CURRENT_BINARY_DIR}
+)
+
+file(GLOB LIB_SRC *.h *.cpp ../Implementation/*.h ../Implementation/*.cpp)
 add_library(${PROJECT_NAME} SHARED ${LIB_SRC})
-target_link_libraries(${PROJECT_NAME} ${SDK_Native})
+target_link_libraries(${PROJECT_NAME} LINK_PUBLIC ${Boost_LIBRARIES})
 
 # Install library
 install(TARGETS ${PROJECT_NAME} DESTINATION lib/${PROJECT_NAME})

@@ -17,6 +17,14 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+
+        externalNativeBuild {
+
+            cmake {
+
+                arguments "-DANDROID_BUILD=TRUE"
+            }
+        }
     }
 
     buildTypes {
@@ -49,7 +57,7 @@ android {
 
         cmake {
 
-            path "../../Native/Implementation/CMakeLists.txt"
+            path "../../Native/JNI/CMakeLists.txt"
         }
     }
 }

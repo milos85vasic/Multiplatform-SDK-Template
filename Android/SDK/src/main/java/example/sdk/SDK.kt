@@ -8,7 +8,7 @@ object SDK {
 
     init {
 
-        System.loadLibrary("SDK_Native")
+        System.loadLibrary("SDK_Native_JNI")
     }
 
     fun hello() {
