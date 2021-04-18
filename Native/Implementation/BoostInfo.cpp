@@ -10,7 +10,7 @@ BoostInfo::BoostInfo() {
                     std::to_string(BOOST_VERSION % 100);
 }
 
-std::string BoostInfo::getBoostInfo() {
+std::string BoostInfo::getBoostVersion() {
 
     return version;
 }

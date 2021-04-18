@@ -33,7 +33,7 @@ find_package(JNI)
 include_directories(
 
         "${PROJECT_BINARY_DIR}"
-        "../Implementation"
+        "${PROJECT_SOURCE_DIR}/../Implementation"
         ${JNI_INCLUDE_DIRS}
         ${CMAKE_CURRENT_BINARY_DIR}
 )

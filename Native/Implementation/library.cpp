@@ -1,10 +1,9 @@
-#include "library.h"
-#include "BoostInfo.h"
-
-#include <boost/version.hpp>
-
 #include <string>
 #include <iostream>
+#include <boost/version.hpp>
+
+#include "library.h"
+#include "BoostInfo.h"
 
 std::string getBoostVersion() {
 
@@ -15,7 +14,8 @@ std::string getBoostVersion() {
 
 BoostInfo getBoostInfo() {
 
-    return BoostInfo();
+    auto info = BoostInfo();
+    return info;
 }
 
 void hello() {

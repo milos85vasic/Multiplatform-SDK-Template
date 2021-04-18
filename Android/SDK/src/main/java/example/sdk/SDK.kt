@@ -1,5 +1,7 @@
 package example.sdk
 
+import example.sdk.model.BoostInfo
+
 object SDK {
 
     init {
@@ -10,4 +12,6 @@ object SDK {
     external fun hello()
 
     external fun getBoostVersion(): String
+
+    external fun getBoostInfo(): BoostInfo
 }

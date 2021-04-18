@@ -2,7 +2,6 @@
 #define SDK_NATIVE_BOOSTINFO_H
 
 #include <string>
-#include <boost/version.hpp>
 
 class BoostInfo {
 
@@ -10,7 +9,7 @@ public:
 
     BoostInfo();
 
-    std::string getBoostInfo();
+    std::string getBoostVersion();
 
 private:
 

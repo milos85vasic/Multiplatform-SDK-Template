@@ -19,8 +19,8 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
 
 
-            val boostVersion = SDK.getBoostVersion()
-            Log.v(tag, "Boost version: $boostVersion")
+            val boostInfo = SDK.getBoostInfo()
+            Log.v(tag, "Boost version: ${boostInfo.version}")
         }
     }
 }

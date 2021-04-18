@@ -7,9 +7,11 @@
 extern "C" {
 #endif
 
-extern "C" JNIEXPORT void JNICALL Java_example_sdk_SDK_hello(JNIEnv *, jobject);
+extern "C" JNIEXPORT void JNICALL Java_example_sdk_SDK_hello(JNIEnv *env, jobject obj);
 
-extern "C" JNIEXPORT jstring JNICALL Java_example_sdk_SDK_getBoostVersion(JNIEnv *, jobject);
+extern "C" JNIEXPORT jstring JNICALL Java_example_sdk_SDK_getBoostVersion(JNIEnv *env, jobject obj);
+
+extern "C" JNIEXPORT jobject JNICALL Java_example_sdk_SDK_getBoostInfo(JNIEnv *env, jobject obj);
 
 #ifdef __cplusplus
 }
