@@ -14,21 +14,15 @@ set(Boost_LIBRARY_DIR "${BOOST_ROOT}/libs")
 
 find_package(Boost 1.71)
 
-message("Boost library include dir: ${Boost_INCLUDE_DIR}")
-message("Boost library library dir: ${Boost_LIBRARY_DIR}")
-
 include_directories(${Boost_INCLUDE_DIR})
 link_directories(${Boost_LIBRARY_DIR})
 
-# Create shared library
 file(GLOB LIB_SRC *.h *.cpp)
 add_library(${PROJECT_NAME} SHARED ${LIB_SRC})
 target_link_libraries(${PROJECT_NAME} LINK_PUBLIC ${Boost_LIBRARIES})
 
-# Install library
 install(TARGETS ${PROJECT_NAME} DESTINATION lib/${PROJECT_NAME})
 
-# Install library headers
 file(GLOB HEADERS *.h)
 install(FILES ${HEADERS} DESTINATION include/${PROJECT_NAME})
 

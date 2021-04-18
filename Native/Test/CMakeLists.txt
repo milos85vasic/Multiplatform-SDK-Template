@@ -8,10 +8,8 @@ project(${PROJECT_NAME} VERSION "${VERSION_MAJOR}.${VERSION_MINOR}" DESCRIPTION 
 
 set(CMAKE_CXX_STANDARD 17)
 
-# Access to shared library header files:
 include_directories("/usr/local/include/SDK_Native")
 
-# Link shared library:
 link_directories("/usr/local/lib/SDK_Native")
 link_libraries(SDK_Native)
 

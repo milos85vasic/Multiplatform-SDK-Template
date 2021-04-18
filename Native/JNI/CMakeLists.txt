@@ -12,10 +12,9 @@ set(BOOST_ROOT "${PROJECT_SOURCE_DIR}/../../Boost")
 set(Boost_INCLUDE_DIR "${BOOST_ROOT}")
 set(Boost_LIBRARY_DIR "${BOOST_ROOT}/libs")
 
-find_package(Boost 1.71)
+set(IMPLEMENTATION_DIR "../Implementation")
 
-message("Boost library include dir: ${Boost_INCLUDE_DIR}")
-message("Boost library library dir: ${Boost_LIBRARY_DIR}")
+find_package(Boost 1.71)
 
 include_directories(${Boost_INCLUDE_DIR})
 link_directories(${Boost_LIBRARY_DIR})
@@ -33,19 +32,17 @@ find_package(JNI)
 include_directories(
 
         "${PROJECT_BINARY_DIR}"
-        "${PROJECT_SOURCE_DIR}/../Implementation"
+        "${PROJECT_SOURCE_DIR}/${IMPLEMENTATION_DIR}"
         ${JNI_INCLUDE_DIRS}
         ${CMAKE_CURRENT_BINARY_DIR}
 )
 
-file(GLOB LIB_SRC *.h *.cpp ../Implementation/*.h ../Implementation/*.cpp)
+file(GLOB LIB_SRC *.h *.cpp ${IMPLEMENTATION_DIR}/*.h ${IMPLEMENTATION_DIR}/*.cpp)
 add_library(${PROJECT_NAME} SHARED ${LIB_SRC})
 target_link_libraries(${PROJECT_NAME} LINK_PUBLIC ${Boost_LIBRARIES})
 
-# Install library
 install(TARGETS ${PROJECT_NAME} DESTINATION lib/${PROJECT_NAME})
 
-# Install library headers
 file(GLOB HEADERS *.h)
 install(FILES ${HEADERS} DESTINATION include/${PROJECT_NAME})
 
