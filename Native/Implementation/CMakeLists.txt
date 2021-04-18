@@ -8,6 +8,14 @@ project(${PROJECT_NAME} VERSION "${VERSION_MAJOR}.${VERSION_MINOR}" DESCRIPTION 
 
 set(CMAKE_CXX_STANDARD 17)
 
+if(CMAKE_BUILD_TYPE)
+
+    message("Cmake build type: ${CMAKE_BUILD_TYPE}")
+else()
+
+    set(CMAKE_BUILD_TYPE RelWithDebInfo)
+endif()
+
 set(BOOST_ROOT "${PROJECT_SOURCE_DIR}/../../Boost")
 set(Boost_INCLUDE_DIR "${BOOST_ROOT}")
 set(Boost_LIBRARY_DIR "${BOOST_ROOT}/libs")

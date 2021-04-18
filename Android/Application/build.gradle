@@ -19,12 +19,23 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+
+        development {
+            storeFile file("Signing_Keys/Development.key")
+            storePassword "Test12345"
+            keyAlias "key0"
+            keyPassword "Test12345"
+        }
+    }
+
     buildTypes {
 
         release {
 
             debuggable true
             minifyEnabled false
+            signingConfig signingConfigs.development
         }
 
         debug {
@@ -32,6 +43,7 @@ android {
             debuggable true
             minifyEnabled false
             versionNameSuffix " DEBUG"
+            signingConfig signingConfigs.development
         }
     }
 
@@ -44,6 +56,19 @@ android {
     kotlinOptions {
 
         jvmTarget = '1.8'
+    }
+
+    packagingOptions {
+
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/*.kotlin_module'
     }
 }
 

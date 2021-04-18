@@ -8,6 +8,14 @@ project(${PROJECT_NAME} VERSION "${VERSION_MAJOR}.${VERSION_MINOR}" DESCRIPTION 
 
 set(CMAKE_CXX_STANDARD 17)
 
+if(CMAKE_BUILD_TYPE)
+
+    message("Cmake build type: ${CMAKE_BUILD_TYPE}")
+else()
+
+    set(CMAKE_BUILD_TYPE RelWithDebInfo)
+endif()
+
 include_directories("/usr/local/include/SDK_Native")
 
 link_directories("/usr/local/lib/SDK_Native")
