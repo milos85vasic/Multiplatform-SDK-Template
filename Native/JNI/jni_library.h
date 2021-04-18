@@ -7,7 +7,7 @@
 extern "C" {
 #endif
 
-JNIEXPORT void JNICALL Java_example_sdk_SDK_hello(JNIEnv *, jobject);
+extern "C" JNIEXPORT void JNICALL Java_example_sdk_SDK_hello(JNIEnv *, jobject);
 
 #ifdef __cplusplus
 }
