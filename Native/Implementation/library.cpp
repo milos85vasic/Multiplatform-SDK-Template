@@ -15,7 +15,7 @@ std::string getBoostVersion() {
 
 BoostInfo getBoostInfo() {
 
-    return BoostInfo()
+    return BoostInfo();
 }
 
 void hello() {
