@@ -1,19 +1,19 @@
 cmake_minimum_required(VERSION 3.10)
-project(SDK_Native_Test)
+
+set(PROJECT_NAME SDK_Native_Test)
+set(VERSION_MAJOR 1)
+set(VERSION_MINOR 0)
+
+project(${PROJECT_NAME} VERSION "${VERSION_MAJOR}.${VERSION_MINOR}" DESCRIPTION "SDK native library test")
 
 set(CMAKE_CXX_STANDARD 17)
 
-set(SDK_Native_Test_VERSION_MAJOR 1)
-set(SDK_Native_Test_VERSION_MINOR 0)
+# Access to shared library header files:
+include_directories("/usr/local/include/SDK_Native")
 
-include_directories("../Implementation")
-
-file(
-
-        GLOB SDK_SRC
-        "../Implementation/library.h"
-        "../Implementation/library.cpp"
-)
+# Link shared library:
+link_directories("/usr/local/lib/SDK_Native")
+link_libraries(SDK_Native)
 
 include(FetchContent)
 FetchContent_Declare(
@@ -25,23 +25,11 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-set(BOOST_ROOT "${PROJECT_SOURCE_DIR}/../../Boost")
-set(Boost_INCLUDE_DIR "${BOOST_ROOT}")
-set(Boost_LIBRARY_DIR "${BOOST_ROOT}/libs")
-
-find_package(Boost 1.71)
-
 enable_testing()
 
-add_executable(SDK_Native_Test ${SDK_SRC} test.cpp)
+add_executable(${PROJECT_NAME} test.cpp)
 
-message("Include dir: ${Boost_INCLUDE_DIR}")
-message("Library dir: ${Boost_LIBRARY_DIR}")
-
-include_directories(${Boost_INCLUDE_DIR})
-link_directories(${Boost_LIBRARY_DIR})
-
-target_link_libraries(SDK_Native_Test LINK_PUBLIC ${Boost_LIBRARIES} gtest_main)
+target_link_libraries(${PROJECT_NAME} gtest_main)
 
 include(GoogleTest)
-gtest_discover_tests(SDK_Native_Test)
+gtest_discover_tests(${PROJECT_NAME})
