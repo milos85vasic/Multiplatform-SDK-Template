@@ -13,6 +13,6 @@ object SDK {
 
     fun hello() {
 
-        Log.v(tag, "")
+        Log.v(tag, "Hello from SDK")
     }
 }
