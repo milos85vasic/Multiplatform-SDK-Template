@@ -1,11 +1,14 @@
 package example.sdk.client
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import example.sdk.SDK
 
 class MainActivity : AppCompatActivity() {
+
+    private val tag = MainActivity::class.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,7 +19,8 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
 
 
-            SDK.hello()
+            val boostVersion = SDK.getBoostVersion()
+            Log.v(tag, "Boost version: $boostVersion")
         }
     }
 }

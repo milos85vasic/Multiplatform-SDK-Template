@@ -9,6 +9,8 @@ extern "C" {
 
 extern "C" JNIEXPORT void JNICALL Java_example_sdk_SDK_hello(JNIEnv *, jobject);
 
+extern "C" JNIEXPORT jstring JNICALL Java_example_sdk_SDK_getBoostVersion(JNIEnv *, jobject);
+
 #ifdef __cplusplus
 }
 #endif

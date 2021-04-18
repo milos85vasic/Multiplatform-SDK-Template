@@ -8,4 +8,6 @@ object SDK {
     }
 
     external fun hello()
+
+    external fun getBoostVersion(): String
 }
