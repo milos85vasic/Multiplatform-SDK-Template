@@ -12,7 +12,7 @@ set(Boost_LIBRARY_DIR "${BOOST_ROOT}/libs")
 
 find_package(Boost 1.71)
 
-add_library(SDK_Native library.cpp library.h)
+add_library(SDK_Native SHARED library.cpp library.h)
 
 message("Include dir: ${Boost_INCLUDE_DIR}")
 message("Library dir: ${Boost_LIBRARY_DIR}")
