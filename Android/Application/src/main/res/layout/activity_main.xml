@@ -4,12 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="10dp"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/execute_sdk_native_method"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="15dp"
         android:text="@string/execute_sdk_native_method" />
+
+    <Button
+        android:id="@+id/execute_sdk_native_method_with_callback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:text="@string/execute_sdk_native_method_with_callback" />
 
 </LinearLayout>

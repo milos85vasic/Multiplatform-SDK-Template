@@ -14,4 +14,6 @@ object SDK {
     external fun getBoostVersion(): String
 
     external fun getBoostInfo(): BoostInfo
+
+    external fun tryCallback(callback: Callback)
 }

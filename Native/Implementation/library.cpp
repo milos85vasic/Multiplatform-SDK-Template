@@ -20,8 +20,7 @@ std::string getBoostVersion() {
 
 BoostInfo getBoostInfo() {
 
-    auto info = BoostInfo();
-    return info;
+    return BoostInfo();
 }
 
 void hello() {
@@ -37,5 +36,5 @@ void tryHttpGet(const std::function<void(bool)> &callback) {
 
 void tryCallback(const std::function<void(bool)> &callback) {
 
-    callback(false);
+    callback(true);
 }
