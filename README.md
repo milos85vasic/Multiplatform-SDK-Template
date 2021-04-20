@@ -46,6 +46,62 @@ iOS dependencies are the following:
 
 - XCode >= 12.4
 
+## Configurations
+
+### Conan profiles
+
+The following conan profiles (located at: `~/.conan/profiles`) have been used for building:
+
+default:
+```
+[settings]
+os=Macos
+os_build=Macos
+arch=x86_64
+arch_build=x86_64
+compiler=clang
+compiler.version=12
+compiler.libcxx=libstdc++11
+build_type=RelWithDebInfo
+[options]
+[build_requires]
+[env]
+```
+
+android_armeabi-v7a:
+```
+include(default)
+[settings]
+arch=armv7
+build_type=Release
+compiler=clang
+compiler.libcxx=libc++
+compiler.version=8
+os=Android
+os.api_level=21
+[build_requires]
+android_ndk_installer/r20@bincrafters/stable
+[options]
+[env]
+```
+
+android_arm64-v8a:
+```
+include(default)
+[settings]
+arch=armv8
+build_type=Release
+compiler=clang
+compiler.libcxx=libc++
+compiler.version=8
+os=Android
+os.api_level=21
+[build_requires]
+android_ndk_installer/r20@bincrafters/stable
+[options]
+[env]
+```
+
 ## How to build and test
 
 Tbd.
