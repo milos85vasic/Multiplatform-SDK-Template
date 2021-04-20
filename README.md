@@ -6,6 +6,7 @@ Template / Example project for multiplatform SDKs.
 
 Code is divided into three parts:
 
+- Boost, the [Boost](https://www.boost.org/) C++ library
 - Native, the core that contains native C++ implementation shared between platforms
 - Android, Android SDK version
 - iOS, iOS SDK version
@@ -28,7 +29,7 @@ Native C++ core depends on the following libraries:
 - C++ >= 17
 - A compatible C++ compiler that supports C++ >= 17
 - Cmake >= 3.10
-- [Boost](https://www.boost.org/) (provided by [Conan](https://conan.io/center/boost)) >= 1.75.0
+- [Boost](https://www.boost.org/) (used as a part of the SDK) >= 1.76.0
 - [OpenSSL](https://www.openssl.org/) (provided by [Conan](https://conan.io/center/openssl)) >= 1.1.1k
 - For unit tests, [Google Test library](https://github.com/google/googletest) (provided by [Conan](https://conan.io/center/gtest)) >= 1.10.0
 
