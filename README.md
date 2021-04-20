@@ -37,7 +37,7 @@ Native C++ code depends on the several libraries and technologies:
 Android dependencies are the follwoing:
 
 - Android Studio >= 4.1.3
-- Android NDK >= 21.0.6113669
+- Android NDK >= 22.1.7171670
 - Kotlin >= 1.4.32
 
 ### iOS dependencies
