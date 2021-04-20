@@ -6,11 +6,10 @@ Template / Example project for multiplatform SDKs.
 
 Code is divided into three parts:
 
-- Boost, the [Boost](https://www.boost.org/) C++ library
-- OpenSSL, the [OpenSSL](https://www.openssl.org/) C++ library
 - Native, the core that contains native C++ implementation shared between platforms
 - Android, Android SDK version
 - iOS, iOS SDK version
+- Other supported platforms ([Qt](https://www.qt.io/) etc.)
 
 Both Android and iOS use C++ core (native library). On top of this, they are adding OS-specific features.
 
@@ -25,13 +24,13 @@ To be able to build SDK some dependencies must be fulfilled:
 
 Native C++ core depends on the following libraries:
 
+- [Conan](https://docs.conan.io/en/latest/installation.html) C/C++ package manager >= 1.35.2
 - C++ >= 17
-- A compatible C++ compiler that supports at least C++ 17
+- A compatible C++ compiler that supports C++ >= 17
 - Cmake >= 3.10
-- Make build tool >= 3.81
-- [Boost](https://www.boost.org/) (used as a part of this example SDK) >= 1.76.0
-- [OpenSSL](https://www.openssl.org/) (required for HTTPS scommunication) >= 3.0.0
-- For unit tests, [Google Test library](https://github.com/google/googletest) >= 1.10
+- [Boost](https://www.boost.org/) (provided by [Conan](https://conan.io/center/boost)) >= 1.75.0
+- [OpenSSL](https://www.openssl.org/) (provided by [Conan](https://conan.io/center/openssl)) >= 1.1.1k
+- For unit tests, [Google Test library](https://github.com/google/googletest) (provided by [Conan](https://conan.io/center/gtest)) >= 1.10.0
 
 ### Android dependencies
 
