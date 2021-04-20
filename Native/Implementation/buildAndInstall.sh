@@ -17,4 +17,7 @@ if ! mkdir "./$buildDir"; then
   exit 1
 fi
 
-cd "./$buildDir" && cmake .. && make -j "$(getconf _NPROCESSORS_ONLN)" && make install
+cd "./$buildDir" &&
+  cmake .. &&
+  make -j "$(getconf _NPROCESSORS_ONLN)" &&
+  make install

@@ -1,25 +1,18 @@
 cmake_minimum_required(VERSION 3.10)
 
 set(PROJECT_NAME SDK_Native_Test)
-set(VERSION_MAJOR 1)
-set(VERSION_MINOR 0)
+set(IMPLEMENTATION_DIR "../Implementation")
+
+include("../CMake/Version/CMakeLists.txt")
 
 project(${PROJECT_NAME} VERSION "${VERSION_MAJOR}.${VERSION_MINOR}" DESCRIPTION "SDK native library test")
 
-set(CMAKE_CXX_STANDARD 17)
+include("../CMake/Standard/CMakeLists.txt")
+include("../CMake/Build_Type/CMakeLists.txt")
+include("../CMake/Boost/CMakeLists.txt")
+include("../CMake/Conan/CMakeLists.txt")
 
-if(CMAKE_BUILD_TYPE)
-
-    message("Cmake build type: ${CMAKE_BUILD_TYPE}")
-else()
-
-    set(CMAKE_BUILD_TYPE RelWithDebInfo)
-endif()
-
-include_directories("/usr/local/include/SDK_Native")
-
-link_directories("/usr/local/lib/SDK_Native")
-link_libraries(SDK_Native)
+include_directories(${PROJECT_SOURCE_DIR}/${IMPLEMENTATION_DIR})
 
 include(FetchContent)
 FetchContent_Declare(
@@ -33,9 +26,9 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
-add_executable(${PROJECT_NAME} test.cpp)
-
-target_link_libraries(${PROJECT_NAME} gtest_main)
+file(GLOB LIB_SRC *.h *.cpp ${IMPLEMENTATION_DIR}/*.h ${IMPLEMENTATION_DIR}/*.cpp)
+add_executable(${PROJECT_NAME} ${LIB_SRC})
+target_link_libraries(${PROJECT_NAME} ${CONAN_LIBS} gtest_main)
 
 include(GoogleTest)
 gtest_discover_tests(${PROJECT_NAME})

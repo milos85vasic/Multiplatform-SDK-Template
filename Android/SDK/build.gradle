@@ -21,8 +21,15 @@ android {
 
             cmake {
 
+                cppFlags ""
                 arguments "-DANDROID_BUILD=TRUE"
             }
+        }
+
+        ndk {
+
+            abiFilters 'armeabi-v7a', 'arm64-v8a'
+            stl 'c++_shared'
         }
     }
 
@@ -100,4 +107,35 @@ dependencies {
     testImplementation "junit:junit:4.13.2"
     androidTestImplementation "androidx.test.ext:junit:1.1.2"
     androidTestImplementation "androidx.test.espresso:espresso-core:3.3.0"
+}
+
+task conanInstall {
+
+    def buildDir = new File("SDK")
+    buildDir.mkdirs()
+
+    android.defaultConfig.ndk.abiFilters.each {
+
+        def arch = it
+
+        def variants = ["debug", "release"]
+        variants.each {
+
+            def variant = it
+
+            def cmd = "sh ./conanInstall.sh " + arch + " " + variant
+            print(">> ${cmd} \n")
+
+            def sout = new StringBuilder(), serr = new StringBuilder()
+            def proc = cmd.execute(null, buildDir)
+
+            proc.consumeProcessOutput(sout, serr)
+            proc.waitFor()
+            println "$sout $serr"
+            if (proc.exitValue() != 0) {
+
+                throw new Exception("out:\n$sout\nerr:\n$serr\nCommand: ${cmd}")
+            }
+        }
+    }
 }

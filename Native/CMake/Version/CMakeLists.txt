@@ -1,0 +1,4 @@
+set(VERSION_MAJOR 1)
+set(VERSION_MINOR 0)
+
+message("${PROJECT_NAME}, version: ${VERSION_MAJOR}.${VERSION_MINOR}")
