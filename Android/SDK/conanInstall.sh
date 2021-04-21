@@ -2,53 +2,28 @@
 
 arch="$1"
 variant="$2"
+conanFile="conanfile.txt"
+location=".cxx/cmake/$variant/$arch"
 
 echo "Performing Conan install procedure for the arch. '$arch'"
 echo "Build variant: $variant"
 
-location=".cxx/cmake/$variant/$arch"
-if ! test -e "$location"; then
+if sh conanPrepare.sh "$conanFile" "$location"; then
 
-
-  if ! mkdir -p "$location"; then
-
-    echo "ERROR: $location was not created"
-    exit 1
-  fi
-fi
-
-conanFile="conanfile.txt"
-locationConanFile="$location/$conanFile"
-
-if test -e "$locationConanFile"; then
-
-  if rm -f "$locationConanFile"; then
-
-    echo "$locationConanFile: removed"
-  else
-
-    echo "ERROR: $locationConanFile was not removed"
-    exit 1
-  fi
-fi
-
-if cp "$conanFile" "$locationConanFile"; then
-
-
-  echo "$conanFile copied to $locationConanFile"
+  echo "Conan file prepared"
 else
 
-  echo "ERROR: $conanFile was not copied to $locationConanFile"
+  echo "Conan file was not prepared"
   exit 1
 fi
 
 if cd "$location" &&
   conan install "./$conanFile" --profile "android_$arch" --build missing; then
 
-  echo "Conan installation procedure completed"
+  echo "Conan installation procedure completed for the arch. '$arch'"
 else
 
-  echo "ERROR: Conan installation procedure failed"
+  echo "ERROR: Conan installation procedure failed for the arch. '$arch'"
   exit 1
 fi
 
