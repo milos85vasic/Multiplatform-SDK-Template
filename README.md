@@ -19,7 +19,7 @@ Project is divided into the several parts:
   - iOS SDK
   - Example application that uses iOS SDK
 
-Both Android and iOS use C++ core (native library). On top of this, OS-specific features are added.
+Both Android and iOS SDKs use C++ core (native library). On the top of this, OS-specific features are added.
 
 ## Operating systems
 
@@ -63,6 +63,8 @@ iOS dependencies are the following:
 - XCode >= 12.4
 
 ## Configurations
+
+Here is the list of important configurations required in order to successfully build, test and run this project.
 
 ### Conan profiles
 
