@@ -145,13 +145,35 @@ mkdir Multiplatform-SDK-Template && cd Multiplatform-SDK-Template &&
 git clone --recurse-submodules git@github.com:milos85vasic/Multiplatform-SDK-Template.git .
 ```
 
+*Note:* All commands in upcoming sections are realtive to `Multiplatform-SDK-Template` directory where the project is cloned.
+
 ### How to build and test native code
 
-Tbd.
+To build and test native code perform the following commands:
+
+```
+cd Native/Implementation && ./buildAndInstall.sh
+```
+
+Which will build and install main shared library. In order to test the library execute the following:
+
+```
+cd ../Test && ./buildAndTest.sh
+```
+
+And finally, to build and install JNI library execute:
+
+```
+cd ../JNI && ./buildAndInstall.sh
+```
 
 ### How to build and test Android code
 
-Tbd.
+Steps from the previous section are not required in order to build, run or test Android version of the SDK. To build Android SDK perform the following steps:
+
+```
+cd Android && gradle wrapper && ./gradlew clean && ./gradlew build
+```
 
 ### How to build and test iOS code
 
