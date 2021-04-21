@@ -159,7 +159,7 @@ android_ndk_installer/r20@bincrafters/stable
 To be able to access project source code or build it is required to clone the Git repository. The following command clones the project and initializes all Git submodules:
 
 ```
-mkdir Multiplatform-SDK-Template && cd Multiplatform-SDK-Template &&
+mkdir Multiplatform-SDK-Template && cd Multiplatform-SDK-Template && \
 git clone --recurse-submodules git@github.com:milos85vasic/Multiplatform-SDK-Template.git .
 ```
 
