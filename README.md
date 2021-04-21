@@ -187,10 +187,18 @@ cd ../JNI && ./buildAndInstall.sh
 
 ### How to build and test Android code
 
-Steps from the previous section are not required in order to build, run or test Android version of the SDK. To build Android SDK perform the following steps:
+Steps from the previous section are not required in order to build, run or test Android version of the SDK.
+
+To build Android SDK perform the following steps:
 
 ```
 cd Android && gradle wrapper && ./gradlew clean && ./gradlew build
+```
+
+To execute Android tests perform the following steps from the `Android` directory:
+
+```
+./gradlew connectedAndroidTest
 ```
 
 ### How to build and test iOS code
