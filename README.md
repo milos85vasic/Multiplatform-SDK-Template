@@ -102,6 +102,40 @@ android_ndk_installer/r20@bincrafters/stable
 [env]
 ```
 
+android_x86:
+```
+include(default)
+[settings]
+arch=x86
+build_type=Release
+compiler=clang
+compiler.libcxx=libc++
+compiler.version=8
+os=Android
+os.api_level=21
+[build_requires]
+android_ndk_installer/r20@bincrafters/stable
+[options]
+[env]
+```
+
+android_x86_64:
+```
+include(default)
+[settings]
+arch=x86_64
+build_type=Release
+compiler=clang
+compiler.libcxx=libc++
+compiler.version=8
+os=Android
+os.api_level=21
+[build_requires]
+android_ndk_installer/r20@bincrafters/stable
+[options]
+[env]
+```
+
 ## How to build and test
 
 Tbd.
