@@ -195,6 +195,12 @@ To build Android SDK perform the following steps:
 cd Android && gradle wrapper && ./gradlew clean && ./gradlew build
 ```
 
+*Note:* Befor you trigger build command make sure thet your Android `local.properties` is defined. It should look like in the following example:
+
+```
+sdk.dir=/Users/milosvasic/Library/Android/sdk
+```
+
 To execute Android tests perform the following steps from the `Android` directory:
 
 ```
