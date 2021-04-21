@@ -13,6 +13,13 @@ Code is divided into several parts:
 
 Both Android and iOS use C++ core (native library). On top of this, OS-specific features are added.
 
+## Operating systems
+
+This project has been tested on the following operating systems:
+
+- macOS Big Sur >= 11.2.3
+- Majnaro Linux >= 21.0.2
+
 ## Dependencies
 
 To be able to build SDK some dependencies must be fulfilled:
@@ -36,6 +43,7 @@ Native C++ code depends on several libraries and technologies:
 
 Android dependencies are the following:
 
+- [Gradle](https://gradle.org/) build tool >= 6.7
 - Android Studio >= 4.1.3
 - Android NDK >= 22.1.7171670
 - Kotlin >= 1.4.32
