@@ -72,4 +72,44 @@ extern "C" JNIEXPORT void JNICALL Java_example_sdk_SDK_tryCallback(
     tryCallback(clb);
 }
 
+extern "C" JNIEXPORT void JNICALL Java_example_sdk_SDK_tryHttpGet(JNIEnv *env, jobject diz, jobject callback) {
+
+    auto clb = [&env, &callback](bool success, std::string &responseBody) {
+
+        /*
+            Command:
+
+            javap -s ./SDK/build/tmp/kotlin-classes/debug/example/sdk/CallbackWithData.class
+
+            Output:
+
+            Compiled from "CallbackWithData.kt"
+            public interface example.sdk.CallbackWithData {
+
+              public abstract void onSuccess(boolean, java.lang.String);
+                descriptor: (ZLjava/lang/String;)V
+            }
+         */
+        auto clazz = env->GetObjectClass(callback);
+        if (env->IsInstanceOf(callback, clazz)) {
+
+            auto methodId = env->GetMethodID(clazz, "onSuccess", "(ZLjava/lang/String;)V");
+            if (methodId != nullptr) {
+
+                jboolean s(success);
+                auto rBody = env->NewStringUTF(responseBody.c_str());
+                env->CallVoidMethod(callback, methodId, s, rBody);
+            } else {
+
+                // TODO: Handle error
+            }
+        } else {
+
+            // TODO: Handle error
+        }
+    };
+
+    tryHttpGet(clb);
+}
+
 

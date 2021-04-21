@@ -15,6 +15,8 @@ extern "C" JNIEXPORT jobject JNICALL Java_example_sdk_SDK_getBoostInfo(JNIEnv *e
 
 extern "C" JNIEXPORT void JNICALL Java_example_sdk_SDK_tryCallback(JNIEnv *env, jobject diz, jobject callback);
 
+extern "C" JNIEXPORT void JNICALL Java_example_sdk_SDK_tryHttpGet(JNIEnv *env, jobject diz, jobject callback);
+
 #ifdef __cplusplus
 }
 #endif

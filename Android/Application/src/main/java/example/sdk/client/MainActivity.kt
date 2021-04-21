@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import example.sdk.Callback
+import example.sdk.CallbackWithData
 import example.sdk.SDK
 
 class MainActivity : AppCompatActivity() {
@@ -16,13 +17,30 @@ class MainActivity : AppCompatActivity() {
 
         override fun onSuccess(success: Boolean) {
 
-            val msg = "Callback executed, success: $success"
+            val msg = "Callback executed: (success=$success)"
 
             Log.v(tag, msg)
 
             Toast
                 .makeText(this@MainActivity, msg, Toast.LENGTH_SHORT)
                 .show()
+        }
+    }
+
+    private val callbackWithData = object : CallbackWithData {
+
+        override fun onSuccess(success: Boolean, data: String) {
+
+            val msg = "Callback with data executed: (success=$success, data=${data.length})"
+
+            Log.v(tag, msg)
+
+            runOnUiThread {
+
+                Toast
+                    .makeText(this@MainActivity, msg, Toast.LENGTH_SHORT)
+                    .show()
+            }
         }
     }
 
@@ -49,6 +67,12 @@ class MainActivity : AppCompatActivity() {
         btnNativeCallback.setOnClickListener {
 
             SDK.tryCallback(callback)
+        }
+
+        val btnNativeHttpsCall = findViewById<Button>(R.id.execute_native_https_call)
+        btnNativeHttpsCall.setOnClickListener {
+
+            SDK.tryHttpGetAsync(callbackWithData)
         }
     }
 }

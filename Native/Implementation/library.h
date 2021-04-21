@@ -11,8 +11,10 @@ std::string getBoostVersion();
 
 BoostInfo getBoostInfo();
 
+void tryCallback(const std::function<void(bool)> &callback);
+
 void tryHttpGet(const std::function<void(bool, std::string&)> &callback);
 
-void tryCallback(const std::function<void(bool)> &callback);
+void executeHttpsCall(const std::function<void(bool, std::string&)> &callback);
 
 #endif //NATIVE_LIBRARY_H

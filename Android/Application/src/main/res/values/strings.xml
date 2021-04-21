@@ -2,5 +2,6 @@
     <string name="app_name">Try native SDK</string>
 
     <string name="execute_sdk_native_method">Execute SDK native method</string>
+    <string name="execute_native_https_call">Execute native HTTPS call</string>
     <string name="execute_sdk_native_method_with_callback">Execute SDK native method with callback</string>
 </resources>

@@ -9,7 +9,6 @@
 #include <boost/asio/ssl/stream.hpp>
 
 #include <string>
-#include <thread>
 #include <iostream>
 #include <functional>
 
@@ -40,7 +39,7 @@ void hello() {
     std::cout << "Using Boost " << getBoostVersion() << std::endl;
 }
 
-void executeHttpsCall(const std::function<void(bool, std::string&)> &callback) {
+void executeHttpsCall(const std::function<void(bool, std::string &)> &callback) {
 
     try {
 
@@ -110,13 +109,12 @@ void executeHttpsCall(const std::function<void(bool, std::string&)> &callback) {
     }
 }
 
-void tryHttpGet(const std::function<void(bool, std::string&)> &callback) {
-
-    std::thread thread(executeHttpsCall, callback);
-    thread.join();
-}
-
 void tryCallback(const std::function<void(bool)> &callback) {
 
     callback(true);
+}
+
+void tryHttpGet(const std::function<void(bool, std::string &)> &callback) {
+
+    executeHttpsCall(callback);
 }

@@ -21,4 +21,11 @@
         android:padding="15dp"
         android:text="@string/execute_sdk_native_method_with_callback" />
 
+    <Button
+        android:id="@+id/execute_native_https_call"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:text="@string/execute_native_https_call" />
+
 </LinearLayout>
