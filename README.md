@@ -6,7 +6,7 @@ Template / Example project for multiplatform SDKs.
 
 Code is divided into several parts:
 
-- [Boost](https://www.boost.org/) C++ library, provided as Git submodule
+- [Boost](https://www.boost.org/) C++ library provided as Git submodule
 - Native, the core that contains native C++ implementations shared between platforms
 - Android, Android SDK version
 - iOS, iOS SDK version
@@ -22,7 +22,7 @@ To be able to build SDK some dependencies must be fulfilled:
 
 ### Native dependencies
 
-Native C++ code depends on the several libraries and technologies:
+Native C++ code depends on several libraries and technologies:
 
 - [Conan](https://docs.conan.io/en/latest/installation.html) C/C++ package manager >= 1.35.2
 - C++ >= 17
@@ -34,7 +34,7 @@ Native C++ code depends on the several libraries and technologies:
 
 ### Android dependencies
 
-Android dependencies are the follwoing:
+Android dependencies are the following:
 
 - Android Studio >= 4.1.3
 - Android NDK >= 22.1.7171670
@@ -45,6 +45,62 @@ Android dependencies are the follwoing:
 iOS dependencies are the following:
 
 - XCode >= 12.4
+
+## Configurations
+
+### Conan profiles
+
+The following conan profiles (located at: `~/.conan/profiles`) have been used for building:
+
+default:
+```
+[settings]
+os=Macos
+os_build=Macos
+arch=x86_64
+arch_build=x86_64
+compiler=clang
+compiler.version=12
+compiler.libcxx=libstdc++11
+build_type=RelWithDebInfo
+[options]
+[build_requires]
+[env]
+```
+
+android_armeabi-v7a:
+```
+include(default)
+[settings]
+arch=armv7
+build_type=Release
+compiler=clang
+compiler.libcxx=libc++
+compiler.version=8
+os=Android
+os.api_level=21
+[build_requires]
+android_ndk_installer/r20@bincrafters/stable
+[options]
+[env]
+```
+
+android_arm64-v8a:
+```
+include(default)
+[settings]
+arch=armv8
+build_type=Release
+compiler=clang
+compiler.libcxx=libc++
+compiler.version=8
+os=Android
+os.api_level=21
+[build_requires]
+android_ndk_installer/r20@bincrafters/stable
+[options]
+[env]
+```
 
 ## How to build and test
 
