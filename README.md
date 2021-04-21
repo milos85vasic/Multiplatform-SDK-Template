@@ -66,7 +66,7 @@ iOS dependencies are the following:
 
 Here is the list of important configurations required in order to successfully build, test and run this project.
 
-### Gradle wrapper properties (`gradlew-wrapper.properties`):
+### Gradle wrapper properties (`gradle-wrapper.properties`):
 
 ```
 distributionBase=GRADLE_USER_HOME
