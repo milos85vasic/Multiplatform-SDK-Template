@@ -8,11 +8,9 @@ Project is divided into the several parts:
 
 - [Boost](https://www.boost.org/) C++ library provided as Git submodule
 - Native, the core that contains native C++ implementations shared between platforms:
-
--- Native, main SDK C++ implementation
--- Test, test for main SDK C++ implementation
--- JNI, JVM bindings with SDK C++ implementation
-
+  - Native, main SDK C++ implementation
+  - Test, test for main SDK C++ implementation
+  - JNI, JVM bindings with SDK C++ implementation
 - Android, Android SDK version
 - iOS, iOS SDK version
 
