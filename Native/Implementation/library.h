@@ -11,7 +11,7 @@ std::string getBoostVersion();
 
 BoostInfo getBoostInfo();
 
-void tryHttpGet(const std::function<void(bool)> &callback);
+void tryHttpGet(const std::function<void(bool, std::string&)> &callback);
 
 void tryCallback(const std::function<void(bool)> &callback);
 

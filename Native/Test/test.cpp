@@ -1,6 +1,7 @@
 #include "library.h"
 
 #include <string>
+#include <thread>
 #include <iostream>
 #include <gtest/gtest.h>
 
@@ -31,4 +32,26 @@ TEST(HttpCallTest, CallbackTest) {
 
     tryCallback(callback);
     ASSERT_TRUE(executed);
+}
+
+TEST(HttpCallTest, CallTest) {
+
+    auto result = false;
+    auto executed = false;
+
+    auto callback = [&result, &executed](bool success, std::string& responseBody) {
+
+        std::cout << "Response: '" << responseBody << "'" << std::endl;
+        result = success;
+        executed = true;
+    };
+
+    tryHttpGet(callback);
+    while (!executed) {
+
+        std::this_thread::yield();
+    }
+
+    ASSERT_TRUE(executed);
+    ASSERT_TRUE(result);
 }
