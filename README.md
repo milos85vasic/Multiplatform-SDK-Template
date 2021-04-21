@@ -11,8 +11,13 @@ Project is divided into the several parts:
   - Native, main SDK C++ implementation
   - Test, test for main SDK C++ implementation
   - JNI, JVM bindings with SDK C++ implementation
+  - CMake, CMake includes used by all C++ targets
 - Android, Android SDK version
+  - Android SDK
+  - Example application that uses Android SDK
 - iOS, iOS SDK version
+  - iOS SDK
+  - Example application that uses iOS SDK
 
 Both Android and iOS use C++ core (native library). On top of this, OS-specific features are added.
 
