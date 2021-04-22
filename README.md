@@ -66,6 +66,16 @@ iOS dependencies are the following:
 
 Here is the list of important configurations required in order to successfully build, test and run this project.
 
+### Gradle wrapper properties (`gradle-wrapper.properties`):
+
+```
+distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+distributionUrl=https\://services.gradle.org/distributions/gradle-6.7-bin.zip
+zipStoreBase=GRADLE_USER_HOME
+zipStorePath=wrapper/dists
+```
+
 ### Conan profiles
 
 The following conan profiles (located at: `~/.conan/profiles`) have been used for building:
@@ -159,7 +169,7 @@ android_ndk_installer/r20@bincrafters/stable
 To be able to access project source code or build it is required to clone the Git repository. The following command clones the project and initializes all Git submodules:
 
 ```
-mkdir Multiplatform-SDK-Template && cd Multiplatform-SDK-Template &&
+mkdir Multiplatform-SDK-Template && cd Multiplatform-SDK-Template && \
 git clone --recurse-submodules git@github.com:milos85vasic/Multiplatform-SDK-Template.git .
 ```
 
@@ -193,6 +203,12 @@ To build Android SDK perform the following steps:
 
 ```
 cd Android && gradle wrapper && ./gradlew clean && ./gradlew build
+```
+
+*Note:* Befor you trigger build command make sure thet your Android `local.properties` is defined. It should look like in the following example:
+
+```
+sdk.dir=/Users/milosvasic/Library/Android/sdk
 ```
 
 To execute Android tests perform the following steps from the `Android` directory:
