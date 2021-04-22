@@ -65,14 +65,16 @@ iOS dependencies are the following:
 
 Here is the list of important configurations required in order to successfully build, test and run this project.
 
-### Gradle wrapper properties (`gradle-wrapper.properties`):
+### Gradle wrapper properties
+
+`gradle-wrapper.properties`:
 
 ```
 distributionBase=GRADLE_USER_HOME
 distributionPath=wrapper/dists
-distributionUrl=https\://services.gradle.org/distributions/gradle-6.7-bin.zip
 zipStoreBase=GRADLE_USER_HOME
 zipStorePath=wrapper/dists
+distributionUrl=https\://services.gradle.org/distributions/gradle-6.7-all.zip
 ```
 
 ### Conan profiles
