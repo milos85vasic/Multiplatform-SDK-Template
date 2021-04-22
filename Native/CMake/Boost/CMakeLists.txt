@@ -8,7 +8,8 @@ include("${CONAN_BUILD_DIRECTORY}/FindBoost.cmake")
 set(BOOST_LIBRARY_DIRS "${Boost_INCLUDE_DIR}/../lib")
 
 find_package(OpenSSL REQUIRED)
-find_package(Boost 1.75.0 COMPONENTS program_options REQUIRED)
+find_package(Boost 1.75.0 COMPONENTS system filesystem headers thread REQUIRED)
 
 include_directories("${OPENSSL_INCLUDE_DIR}")
 include_directories("${Boost_INCLUDE_DIR}")
+

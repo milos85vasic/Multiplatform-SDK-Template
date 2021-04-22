@@ -19,9 +19,10 @@ file(GLOB LIB_SRC *.h *.cpp ${IMPLEMENTATION_DIR}/*.h ${IMPLEMENTATION_DIR}/*.cp
 add_library(${PROJECT_NAME} SHARED ${LIB_SRC})
 target_link_libraries(
 
-        ${PROJECT_NAME} PRIVATE
-            Boost::program_options
-            ${CONAN_LIBS} OpenSSL::SSL OpenSSL::Crypto
+        ${PROJECT_NAME} PUBLIC
+            OpenSSL::SSL OpenSSL::Crypto
+            Boost::program_options Boost::system Boost::boost
+            Boost::thread Boost::filesystem Boost::headers
 )
 
 include("../CMake/Install/CMakeLists.txt")

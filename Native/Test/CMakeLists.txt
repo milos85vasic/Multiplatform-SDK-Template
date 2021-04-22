@@ -31,7 +31,9 @@ add_executable(${PROJECT_NAME} ${LIB_SRC})
 target_link_libraries(
 
         ${PROJECT_NAME} PUBLIC
-        Boost::program_options OpenSSL::SSL OpenSSL::Crypto gtest_main
+        OpenSSL::SSL OpenSSL::Crypto
+        Boost::program_options Boost::system Boost::boost
+        Boost::thread Boost::filesystem Boost::headers gtest_main
 )
 
 include(GoogleTest)

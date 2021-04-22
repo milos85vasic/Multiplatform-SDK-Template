@@ -16,7 +16,9 @@ add_library(${PROJECT_NAME} SHARED ${LIB_SRC})
 target_link_libraries(
 
         ${PROJECT_NAME} PUBLIC
-        Boost::program_options OpenSSL::SSL OpenSSL::Crypto
+        OpenSSL::SSL OpenSSL::Crypto
+        Boost::program_options Boost::system Boost::boost
+        Boost::thread Boost::filesystem Boost::headers
 )
 
 include("../CMake/Install/CMakeLists.txt")
