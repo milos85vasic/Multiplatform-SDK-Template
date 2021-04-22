@@ -67,7 +67,7 @@ Here is the list of important configurations required in order to successfully b
 
 ### Gradle wrapper properties
 
-`gradle-wrapper.properties`:
+gradle-wrapper.properties:
 
 ```
 distributionBase=GRADLE_USER_HOME
