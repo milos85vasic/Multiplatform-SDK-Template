@@ -21,7 +21,6 @@ android {
 
             cmake {
 
-                cppFlags ""
                 arguments "-DANDROID_BUILD=TRUE"
             }
         }
@@ -29,7 +28,6 @@ android {
         ndk {
 
             abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
-            stl 'c++_shared'
         }
     }
 
