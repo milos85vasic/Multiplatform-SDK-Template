@@ -17,13 +17,7 @@ message("Conan libs: ${CONAN_LIBS}")
 
 file(GLOB LIB_SRC *.h *.cpp ${IMPLEMENTATION_DIR}/*.h ${IMPLEMENTATION_DIR}/*.cpp)
 add_library(${PROJECT_NAME} SHARED ${LIB_SRC})
-target_link_libraries(
-
-        ${PROJECT_NAME} PUBLIC
-            OpenSSL::SSL OpenSSL::Crypto
-            Boost::program_options Boost::system Boost::boost
-            Boost::thread Boost::filesystem Boost::headers
-)
+target_link_libraries(${PROJECT_NAME} PUBLIC CONAN_PKG::boost CONAN_PKG::openssl)
 
 include("../CMake/Install/CMakeLists.txt")
 

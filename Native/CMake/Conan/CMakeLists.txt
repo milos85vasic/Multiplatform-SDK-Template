@@ -26,5 +26,6 @@ execute_process (
         ECHO_OUTPUT_VARIABLE
         ECHO_ERROR_VARIABLE
 )
+
 include(${CONAN_BUILD_DIRECTORY}/conanbuildinfo.cmake)
-conan_basic_setup()
+conan_basic_setup(TARGETS)
