@@ -6,7 +6,6 @@ Template / Example project for multiplatform SDKs.
 
 Project is divided into the several parts:
 
-- [Boost](https://www.boost.org/) C++ library provided as Git submodule
 - Native, the core that contains native C++ implementations shared between platforms:
   - Native, main SDK C++ implementation
   - Test, test for main SDK C++ implementation
@@ -43,7 +42,7 @@ Native C++ code depends on several libraries and technologies:
 - C++ >= 17
 - Clang >= 12.0
 - Cmake >= 3.10
-- [Boost](https://www.boost.org/) (used as a part of the SDK) >= 1.76.0
+- [Boost](https://www.boost.org/) (provided by [Conan](https://conan.io/center/openssl)) >= 1.75.0
 - [OpenSSL](https://www.openssl.org/) (provided by [Conan](https://conan.io/center/openssl)) >= 1.1.1k
 - [Google Test library](https://github.com/google/googletest) for the testing (obtained by Cmake script) >= 1.10.0
 
@@ -66,102 +65,50 @@ iOS dependencies are the following:
 
 Here is the list of important configurations required in order to successfully build, test and run this project.
 
-### Gradle wrapper properties (`gradle-wrapper.properties`):
+### Gradle wrapper properties
+
+gradle-wrapper.properties:
 
 ```
 distributionBase=GRADLE_USER_HOME
 distributionPath=wrapper/dists
-distributionUrl=https\://services.gradle.org/distributions/gradle-6.7-bin.zip
 zipStoreBase=GRADLE_USER_HOME
 zipStorePath=wrapper/dists
+distributionUrl=https\://services.gradle.org/distributions/gradle-6.7-all.zip
 ```
 
 ### Conan profiles
 
 The following conan profiles (located at: `~/.conan/profiles`) have been used for building:
 
-default:
+default (macOS host):
+
 ```
-[settings]
-os=Macos
-os_build=Macos
-arch=x86_64
-arch_build=x86_64
-compiler=clang
-compiler.version=12
-compiler.libcxx=libstdc++11
-build_type=RelWithDebInfo
-[options]
-[build_requires]
-[env]
+Tbd.
 ```
 
 android_armeabi-v7a:
+
 ```
-include(default)
-[settings]
-arch=armv7
-build_type=Release
-compiler=clang
-compiler.libcxx=libc++
-compiler.version=8
-os=Android
-os.api_level=21
-[build_requires]
-android_ndk_installer/r20@bincrafters/stable
-[options]
-[env]
+Tbd.
 ```
 
 android_arm64-v8a:
+
 ```
-include(default)
-[settings]
-arch=armv8
-build_type=Release
-compiler=clang
-compiler.libcxx=libc++
-compiler.version=8
-os=Android
-os.api_level=21
-[build_requires]
-android_ndk_installer/r20@bincrafters/stable
-[options]
-[env]
+Tbd.
 ```
 
 android_x86:
+
 ```
-include(default)
-[settings]
-arch=x86
-build_type=Release
-compiler=clang
-compiler.libcxx=libc++
-compiler.version=8
-os=Android
-os.api_level=21
-[build_requires]
-android_ndk_installer/r20@bincrafters/stable
-[options]
-[env]
+Tbd.
 ```
 
 android_x86_64:
+
 ```
-include(default)
-[settings]
-arch=x86_64
-build_type=Release
-compiler=clang
-compiler.libcxx=libc++
-compiler.version=8
-os=Android
-os.api_level=21
-[build_requires]
-android_ndk_installer/r20@bincrafters/stable
-[options]
-[env]
+Tbd.
 ```
 
 ## How to build and test
