@@ -19,5 +19,5 @@ fi
 
 cd "./$buildDir" &&
   cmake .. &&
-  make -j "$(getconf _NPROCESSORS_ONLN)" &&
+  cmake --build . &&
   ctest
