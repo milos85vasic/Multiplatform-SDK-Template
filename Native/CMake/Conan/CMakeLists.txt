@@ -21,7 +21,7 @@ endif ()
 execute_process (
 
         COMMAND bash -c "cd ${CONAN_BUILD_DIRECTORY} &&
-            conan install .. --profile:host=default --profile:build=${CONAN_PROFILE} --build=missing"
+            conan install .. --profile:host=default --profile:build=${CONAN_PROFILE}"
 
         ECHO_OUTPUT_VARIABLE
         ECHO_ERROR_VARIABLE
