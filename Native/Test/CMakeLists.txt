@@ -9,8 +9,8 @@ project(${PROJECT_NAME} VERSION "${VERSION_MAJOR}.${VERSION_MINOR}" DESCRIPTION 
 
 include("../CMake/Standard/CMakeLists.txt")
 include("../CMake/Build_Type/CMakeLists.txt")
-include("../CMake/Boost/CMakeLists.txt")
 include("../CMake/Conan/CMakeLists.txt")
+include("../CMake/Boost/CMakeLists.txt")
 
 include_directories(${PROJECT_SOURCE_DIR}/${IMPLEMENTATION_DIR})
 
@@ -28,7 +28,11 @@ enable_testing()
 
 file(GLOB LIB_SRC *.h *.cpp ${IMPLEMENTATION_DIR}/*.h ${IMPLEMENTATION_DIR}/*.cpp)
 add_executable(${PROJECT_NAME} ${LIB_SRC})
-target_link_libraries(${PROJECT_NAME} ${CONAN_LIBS} gtest_main)
+target_link_libraries(
+
+        ${PROJECT_NAME} PUBLIC
+        Boost::program_options OpenSSL::SSL OpenSSL::Crypto gtest_main
+)
 
 include(GoogleTest)
 gtest_discover_tests(${PROJECT_NAME})

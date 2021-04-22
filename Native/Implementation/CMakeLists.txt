@@ -8,12 +8,16 @@ project(${PROJECT_NAME} VERSION "${VERSION_MAJOR}.${VERSION_MINOR}" DESCRIPTION 
 
 include("../CMake/Standard/CMakeLists.txt")
 include("../CMake/Build_Type/CMakeLists.txt")
-include("../CMake/Boost/CMakeLists.txt")
 include("../CMake/Conan/CMakeLists.txt")
+include("../CMake/Boost/CMakeLists.txt")
 
 file(GLOB LIB_SRC *.h *.cpp)
 add_library(${PROJECT_NAME} SHARED ${LIB_SRC})
-target_link_libraries(${PROJECT_NAME} ${CONAN_LIBS})
+target_link_libraries(
+
+        ${PROJECT_NAME} PUBLIC
+        Boost::program_options OpenSSL::SSL OpenSSL::Crypto
+)
 
 include("../CMake/Install/CMakeLists.txt")
 

@@ -1,6 +1,14 @@
-set(BOOST_ROOT "${PROJECT_SOURCE_DIR}/../../Boost")
-set(Boost_INCLUDE_DIR "${BOOST_ROOT}")
+include("${CONAN_BUILD_DIRECTORY}/conan_paths.cmake")
+include("${CONAN_BUILD_DIRECTORY}/FindBZip2.cmake")
+include("${CONAN_BUILD_DIRECTORY}/FindZLIB.cmake")
+include("${CONAN_BUILD_DIRECTORY}/FindIconv.cmake")
+include("${CONAN_BUILD_DIRECTORY}/FindOpenSSL.cmake")
+include("${CONAN_BUILD_DIRECTORY}/FindBoost.cmake")
 
-find_package(Boost REQUIRED)
+set(BOOST_LIBRARY_DIRS "${Boost_INCLUDE_DIR}/../lib")
 
-include_directories(${Boost_INCLUDE_DIR})
+find_package(OpenSSL REQUIRED)
+find_package(Boost 1.75.0 COMPONENTS program_options REQUIRED)
+
+include_directories("${OPENSSL_INCLUDE_DIR}")
+include_directories("${Boost_INCLUDE_DIR}")

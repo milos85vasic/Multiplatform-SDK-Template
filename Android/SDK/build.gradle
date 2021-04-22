@@ -35,6 +35,16 @@ android {
 
     buildTypes {
 
+        def parts = project.rootDir.getAbsolutePath().split(File.separator)
+        def builder = new StringBuilder()
+
+        for (int x = 0; x < parts.size() - 1; x++) {
+
+            builder.append(parts[x]).append(File.separator)
+        }
+
+        def conanBuildDirRoot = builder.toString() + "Native/JNI"
+
         release {
 
             debuggable true
@@ -42,9 +52,13 @@ android {
 
             externalNativeBuild {
 
+                def conanBuildDir = "${conanBuildDirRoot}/build-release"
+                println("Conan build directory: ${conanBuildDir}")
+
                 cmake {
 
-                    arguments "-DCMAKE_BUILD_TYPE=RelWithDebInfo"
+                    arguments "-DCMAKE_BUILD_TYPE=RelWithDebInfo", "-DCONAN_BUILD_DIRECTORY=${conanBuildDir}",
+                        "-DCONAN_PROFILE=android_armeabi-v7a"
                 }
             }
         }
@@ -56,9 +70,13 @@ android {
 
             externalNativeBuild {
 
+                def conanBuildDir = "${conanBuildDirRoot}/build-debug"
+                println("Conan build directory: ${conanBuildDir}")
+
                 cmake {
 
-                    arguments "-DCMAKE_BUILD_TYPE=Debug"
+                    arguments "-DCMAKE_BUILD_TYPE=Debug", "-DCONAN_BUILD_DIRECTORY=${conanBuildDir}",
+                            "-DCONAN_PROFILE=android_armeabi-v7a"
                 }
             }
         }
@@ -108,69 +126,3 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:1.1.2"
     androidTestImplementation "androidx.test.espresso:espresso-core:3.3.0"
 }
-
-task conanInstall {
-
-    def buildDir = new File("SDK")
-    buildDir.mkdirs()
-
-    android.defaultConfig.ndk.abiFilters.each {
-
-        def arch = it
-
-        def variants = ["debug", "release"]
-        variants.each {
-
-            def variant = it
-
-            def cmd = "sh ./conanInstall.sh ${arch} ${variant}"
-            print(">> ${cmd} \n")
-
-            def sout = new StringBuilder(), serr = new StringBuilder()
-            def proc = cmd.execute(null, buildDir)
-
-            proc.consumeProcessOutput(sout, serr)
-            proc.waitFor()
-            println "$sout $serr"
-            if (proc.exitValue() != 0) {
-
-                throw new Exception("out:\n$sout\nerr:\n$serr\nCommand: ${cmd}")
-            }
-        }
-    }
-}
-
-task conanPrepare {
-
-    def buildDir = new File("SDK")
-    buildDir.mkdirs()
-
-    android.defaultConfig.ndk.abiFilters.each {
-
-        def arch = it
-
-        def variants = ["debug", "release"]
-        variants.each {
-
-            def variant = it
-
-            def cmd = "sh ./conanPrepare.sh conanfile.txt .cxx/cmake/${variant}/${arch}"
-            print(">> ${cmd} \n")
-
-            def sout = new StringBuilder(), serr = new StringBuilder()
-            def proc = cmd.execute(null, buildDir)
-
-            proc.consumeProcessOutput(sout, serr)
-            proc.waitFor()
-            println "$sout $serr"
-            if (proc.exitValue() != 0) {
-
-                throw new Exception("out:\n$sout\nerr:\n$serr\nCommand: ${cmd}")
-            }
-        }
-    }
-}
-
-clean.finalizedBy(conanPrepare)
-
-build.dependsOn(conanInstall)
