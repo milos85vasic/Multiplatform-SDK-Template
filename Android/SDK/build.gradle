@@ -33,15 +33,7 @@ android {
 
     buildTypes {
 
-        def parts = project.rootDir.getAbsolutePath().split(File.separator)
-        def builder = new StringBuilder()
-
-        for (int x = 0; x < parts.size() - 1; x++) {
-
-            builder.append(parts[x]).append(File.separator)
-        }
-
-        def conanBuildDirRoot = builder.toString() + "Native/JNI"
+        Object conanBuildDirRoot = getConanBuildDir()
 
         release {
 
@@ -56,7 +48,7 @@ android {
                 cmake {
 
                     arguments "-DCMAKE_BUILD_TYPE=RelWithDebInfo", "-DCONAN_BUILD_DIRECTORY=${conanBuildDir}",
-                        "-DCONAN_PROFILE=android_armeabi-v7a"
+                            "-DCONAN_PROFILE=android_armeabi-v7a"
                 }
             }
         }
@@ -113,6 +105,20 @@ android {
     }
 }
 
+private Object getConanBuildDir() {
+
+    def parts = project.rootDir.getAbsolutePath().split(File.separator)
+    def builder = new StringBuilder()
+
+    for (int x = 0; x < parts.size() - 1; x++) {
+
+        builder.append(parts[x]).append(File.separator)
+    }
+
+    def conanBuildDirRoot = builder.toString() + "Native/JNI"
+    conanBuildDirRoot
+}
+
 dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -124,3 +130,29 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:1.1.2"
     androidTestImplementation "androidx.test.espresso:espresso-core:3.3.0"
 }
+
+task conanPrepare {
+
+    Object conanBuildDirRoot = getConanBuildDir()
+
+    android.defaultConfig.ndk.abiFilters.each {
+
+        String arch = it
+        android.buildTypes.each {
+
+            def variant = it.name
+            File directory = new File("${conanBuildDirRoot}/conan-build-${variant}-${arch}")
+
+            if (directory.exists() && project.delete(directory.absolutePath)) {
+
+                println("${directory.absolutePath} has been deleted")
+            }
+            if (directory.mkdirs()) {
+
+                println("${directory.absolutePath} has been created")
+            }
+        }
+    }
+}
+
+clean.finalizedBy(conanPrepare)
