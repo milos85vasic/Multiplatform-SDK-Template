@@ -33,8 +33,6 @@ android {
 
     buildTypes {
 
-        Object conanBuildDirRoot = getConanBuildDir()
-
         release {
 
             debuggable true
@@ -42,13 +40,9 @@ android {
 
             externalNativeBuild {
 
-                def conanBuildDir = "${conanBuildDirRoot}/build-release"
-                println("Conan build directory: ${conanBuildDir}")
-
                 cmake {
 
-                    arguments "-DCMAKE_BUILD_TYPE=RelWithDebInfo", "-DCONAN_BUILD_DIRECTORY=${conanBuildDir}",
-                            "-DCONAN_PROFILE=android_armeabi-v7a"
+                    arguments "-DCMAKE_BUILD_TYPE=RelWithDebInfo"
                 }
             }
         }
@@ -60,13 +54,9 @@ android {
 
             externalNativeBuild {
 
-                def conanBuildDir = "${conanBuildDirRoot}/build-debug"
-                println("Conan build directory: ${conanBuildDir}")
-
                 cmake {
 
-                    arguments "-DCMAKE_BUILD_TYPE=Debug", "-DCONAN_BUILD_DIRECTORY=${conanBuildDir}",
-                            "-DCONAN_PROFILE=android_armeabi-v7a"
+                    arguments "-DCMAKE_BUILD_TYPE=Debug"
                 }
             }
         }
