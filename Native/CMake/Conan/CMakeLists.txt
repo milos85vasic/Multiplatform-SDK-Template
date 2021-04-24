@@ -4,7 +4,7 @@ if (ANDROID_BUILD)
 
     STRING(TOLOWER ${CMAKE_BUILD_TYPE} CBT)
     set(CONAN_BUILD_DIRECTORY "${CMAKE_SOURCE_DIR}/conan-build-${CBT}-${CMAKE_ANDROID_ARCH_ABI}")
-    set(CONAN_PROFILE "android_${CMAKE_ANDROID_ARCH_ABI}")
+    set(CONAN_PROFILE "android_ndk_${CMAKE_ANDROID_ARCH_ABI}")
 
     message(STATUS "Conan build directory parameter is provided: '${CONAN_BUILD_DIRECTORY}'")
     message(STATUS "Conan profile parameter is provided: '${CONAN_PROFILE}'")
@@ -20,7 +20,7 @@ endif ()
 execute_process (
 
         COMMAND bash -c "cd ${CONAN_BUILD_DIRECTORY} &&
-            conan install .. --profile:host=default --profile:build=${CONAN_PROFILE}"
+            conan install .. --profile:host=default --profile:build=${CONAN_PROFILE} --build=missing"
 
         ECHO_OUTPUT_VARIABLE
         ECHO_ERROR_VARIABLE
