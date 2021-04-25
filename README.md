@@ -81,16 +81,42 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-6.7-all.zip
 
 The following conan profiles (located at: `~/.conan/profiles`) have been used for building:
 
-default (macOS host):
+build profile:
 
 ```
-Tbd.
+[settings]
+  os=Linux
+  arch=x86_64
+  compiler=clang
+  compiler.version=9
+  compiler.libcxx=libstdc++
+  build_type=Release
 ```
 
-android_armeabi-v7a:
+host profile `android_armeabi-v7a`:
 
 ```
-Tbd.
+include(default)
+[settings]
+  arch=armv7
+  build_type=Release
+  compiler=clang
+  compiler.libcxx=c++_shared
+  compiler.version=9
+  os=Android
+  os.api_level=23
+[build_requires]
+[options]
+[env]
+  CONAN_CMAKE_TOOLCHAIN_FILE=$ENV{HOME}/Conan/Toolchains/armeabi-v7a/CMakeLists.txt
+```
+
+$ENV{HOME}/Conan/Toolchains/armeabi-v7a/CMakeLists.txt:
+
+```
+set(ANDROID_PLATFORM 23)
+set(ANDROID_ABI armeabi-v7a)
+include($ENV{HOME}/Library/Android/sdk/ndk/21.1.6352462/build/cmake/android.toolchain.cmake)
 ```
 
 android_arm64-v8a:
