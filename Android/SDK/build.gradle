@@ -22,13 +22,13 @@ android {
             cmake {
 
                 cppFlags ""
-                arguments "-DANDROID_BUILD=TRUE", "-DANDROID_ARM_NEON=TRUE", "-DANDROID_STL=c++_shared"
+                arguments "-DANDROID_STL=c++_shared", "-DANDROID_BUILD=TRUE", "-DANDROID_ARM_NEON=TRUE"
             }
         }
 
         ndk {
 
-            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+            abiFilters 'armeabi-v7a' // TODO: , 'arm64-v8a', 'x86', 'x86_64'
             stl 'c++_shared'
         }
     }

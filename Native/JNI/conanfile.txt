@@ -1,8 +1,11 @@
 [requires]
-openssl/1.1.1k
-boost/1.75.0
+    zlib/1.2.11
+    bzip2/1.0.8
+    libiconv/1.16
+    openssl/1.0.2u
+    boost/1.75.0
 
 [generators]
-cmake
-cmake_paths
-cmake_find_package
+    cmake
+    cmake_paths
+    cmake_find_package
