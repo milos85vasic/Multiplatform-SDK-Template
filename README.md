@@ -2,6 +2,8 @@
 
 Template / Example project for multiplatform SDKs.
 
+Repository status: WORK IN PROGRESS.
+
 ## Basic architecture
 
 Project is divided into the several parts:
